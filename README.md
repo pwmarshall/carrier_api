@@ -14,6 +14,7 @@ a lot of this is based on [homebridge-carrier-infinity](https://github.com/grivk
 fork info:
 
 run logging script by cd src && python -m carrier_api.query
+
 passwords.py has 2 values, USERNAME and PASSWORD as strs
 
 ***
