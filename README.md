@@ -11,6 +11,11 @@ Api Wrapper for Carrier Infinity API using async in python, this was inspired by
 a lot of this is based on [homebridge-carrier-infinity](https://github.com/grivkees/homebridge-carrier-infinity).
 
 
+fork info:
+
+run logging script by cd src && python -m carrier_api.query
+passwords.py has 2 values, USERNAME and PASSWORD as strs
+
 ***
 
 [carrier_api]: https://github.com/dahlb/carrier_api
