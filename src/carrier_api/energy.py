@@ -1,8 +1,5 @@
 import logging
 
-from dateutil.parser import isoparse
-import datetime
-
 from .util import safely_get_json_value
 
 _LOGGER = logging.getLogger(__name__)

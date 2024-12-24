@@ -149,8 +149,6 @@ class Config:
         self.limit_min = safely_get_json_value(self.raw_config_json, "utilityEvent.minLimit", int)
         self.limit_max = safely_get_json_value(self.raw_config_json, "utilityEvent.maxLimit", int)
         self.time_stamp = isoparse(safely_get_json_value(self.raw_config_json, "timestamp"))
-        _LOGGER.info(f"Config time_stamp: {self.time_stamp}")
-        _LOGGER.info(f"Config time_stamp raw: {safely_get_json_value(self.raw_config_json, 'timestamp')}")
         self.fueltype = safely_get_json_value(self.raw_config_json, "fueltype")
         self.gasunit = safely_get_json_value(self.raw_config_json, "gasunit")
         vacation_json = {

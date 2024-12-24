@@ -8,4 +8,4 @@ src/carrier_api.egg-info/
 build/
 src/carrier_api/stub.py
 src/carrier_api/passwords.py
-src/system_data.csv
+src/*.csv
