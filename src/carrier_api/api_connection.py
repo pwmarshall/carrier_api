@@ -117,6 +117,10 @@ class ApiConnection:
     def get_config(self, system_serial: str) -> dict:
         url = f"{INFINITY_API_BASE_URL}/systems/{system_serial}/config"
         return self._get(url)["config"]
+    
+    def get_energy(self, system_serial: str) -> dict:
+        url = f"{INFINITY_API_BASE_URL}/systems/{system_serial}/energy"
+        return self._get(url)["energy"]
 
     def update_config(self, system_serial: str, data: dict):
         url = f"{INFINITY_API_BASE_URL}/systems/{system_serial}/config"

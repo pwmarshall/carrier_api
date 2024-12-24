@@ -3,6 +3,7 @@ import logging
 from .profile import Profile
 from .status import Status
 from .config import Config
+from .energy import Energy
 
 
 _LOGGER = logging.getLogger(__name__)
@@ -21,6 +22,7 @@ class System:
         self.profile = Profile(system=self)
         self.status = Status(system=self)
         self.config = Config(system=self)
+        self.energy = Energy(system=self)
 
     def __repr__(self):
         return {
@@ -29,6 +31,7 @@ class System:
             "profile": self.profile.__repr__(),
             "status": self.status.__repr__(),
             "config": self.config.__repr__(),
+            "energy": self.energy.__repr__(),
         }
 
     def __str__(self):

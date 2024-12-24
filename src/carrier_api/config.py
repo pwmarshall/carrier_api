@@ -127,6 +127,8 @@ class Config:
     time_stamp: datetime = None
     zones: [ConfigZone] = None
     raw_config_json: dict = None
+    fueltype: str = None
+    gasunit: str = None
 
     def __init__(
         self,
@@ -147,6 +149,10 @@ class Config:
         self.limit_min = safely_get_json_value(self.raw_config_json, "utilityEvent.minLimit", int)
         self.limit_max = safely_get_json_value(self.raw_config_json, "utilityEvent.maxLimit", int)
         self.time_stamp = isoparse(safely_get_json_value(self.raw_config_json, "timestamp"))
+        _LOGGER.info(f"Config time_stamp: {self.time_stamp}")
+        _LOGGER.info(f"Config time_stamp raw: {safely_get_json_value(self.raw_config_json, 'timestamp')}")
+        self.fueltype = safely_get_json_value(self.raw_config_json, "fueltype")
+        self.gasunit = safely_get_json_value(self.raw_config_json, "gasunit")
         vacation_json = {
             "$": {"id": "vacation"},
             "clsp": self.raw_config_json["vacmaxt"],
@@ -169,6 +175,8 @@ class Config:
             "limit_max": self.limit_max,
             "time_stamp": self.time_stamp.astimezone().strftime("%m/%d/%Y, %H:%M:%S %Z"),
             "zones": [zone.__repr__() for zone in self.zones],
+            "fueltype": self.fueltype,
+            "gasunit": self.gasunit,
         }
 
     def __str__(self):
