@@ -12,6 +12,7 @@ from .const import (
     INFINITY_API_CONSUMER_SECRET,
     FanModes,
     ActivityNames,
+    HeatSourceTypes,
 )
 from .errors import AuthError
 from .system import System
@@ -130,6 +131,12 @@ class ApiConnection:
         data = {"config": {"mode": mode}}
         self.update_config(system_serial=system_serial, data=data)
 
+    def set_heat_source(self, system_serial: str, heat_source: HeatSourceTypes):
+        if heat_source not in HeatSourceTypes:
+            raise ValueError(f"{heat_source} is not a valid heat source")
+        data = {"config": {"heatsource": heat_source}}
+        self.update_config(system_serial=system_serial, data=data)
+
     def set_config_hold(
         self,
         system_serial: str,
@@ -149,16 +156,6 @@ class ApiConnection:
                         }
                     ]
                 }
-            }
-        }
-        self.update_config(system_serial=system_serial, data=data)
-
-    def set_heat_source(self, system_serial: str, head_source: str):
-        if head_source not in ["idu only", "odu only", "system"]:
-            raise ValueError(f"{head_source} is not a valid heat source")
-        data = {
-            "config": {
-                "headsource": head_source,
             }
         }
         self.update_config(system_serial=system_serial, data=data)
